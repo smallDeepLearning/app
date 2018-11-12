@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import HelloWorld from './src/components/HelloWorld'
+import {Text} from 'react-native';
 
 export default class App extends Component {
   render() {
     return (
-      <HelloWorld></HelloWorld>
+      <Text>Hello World!</Text>
     );
   }
 }
