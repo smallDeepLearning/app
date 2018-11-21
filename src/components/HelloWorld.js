@@ -1,19 +1,44 @@
-import React, {Component} from 'react';
-import {StyleSheet, Text} from 'react-native';
+import React, { Component } from "react"
+import { View, Modal, Text, TouchableHighlight } from "react-native"
 
-const styles = StyleSheet.create({
-  title: {
-  	lineHeight: 30,
-  	textAlign: 'center',
-  	fontSize: 14,
-    color: '#cccccc'
+export default class ModalElement extends Component {
+  state = {
+    modalVisible: false
   }
-})
 
-export default class HelloWorld extends Component {
+  setModalVisible(visible) {
+    this.setState({ modalVisible: visible })
+  }
+
   render() {
     return (
-      <Text style={styles.title}>Hello World!</Text>
+      <View style={{ marginTop: 22 }}>
+        <Modal
+          animationType="slide"
+          transparent={false}
+          visible={this.state.modalVisible}
+          onRequestClose={() => {
+            alert("Modal has been closed.")
+          }}>
+          <View style={{ marginTop: 22 }}>
+            <View>
+              <Text>Hello World!</Text>
+              <TouchableHighlight
+                onPress={() => {
+                  this.setModalVisible(!this.state.modalVisible)
+                }}>
+                <Text>Hide Modal</Text>
+              </TouchableHighlight>
+            </View>
+          </View>
+        </Modal>
+        <TouchableHighlight
+          onPress={() => {
+            this.setModalVisible(true)
+          }}>
+          <Text>Show Modal</Text>
+        </TouchableHighlight>
+      </View>
     )
   }
 }
